@@ -982,7 +982,10 @@ export class QueryManager<TStore> {
 
         return maybeDeepFreeze({ data, partial: false });
       } catch (e) {
-        return maybeDeepFreeze({ data: {}, partial: true });
+        return maybeDeepFreeze({
+          data: lastResult ? lastResult.data : {},
+          partial: true,
+        });
       }
     }
   }
